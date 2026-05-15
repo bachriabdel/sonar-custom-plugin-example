@@ -20,10 +20,10 @@
 import Backbone from "backbone";
 import $ from 'jquery';
 import _ from "underscore";
-window.$ = $;
-window._ = _;
-window.Backbone = Backbone;
-window.app = window.app || {};
+globalThis.$ = $;
+globalThis._ = _;
+globalThis.Backbone = Backbone;
+globalThis.app = globalThis.app || {};
 
 // Load the actual app logic.
 require("./view/AppView");

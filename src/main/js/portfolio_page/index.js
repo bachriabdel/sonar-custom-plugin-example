@@ -24,6 +24,6 @@ import VersionsMeasuresHistoryApp from "./components/VersionsMeasuresHistoryApp"
 // projects inside the portfolio.
 //
 //  You can access it at /project/extension/example/portfolio_page?id={PORTFOLIO_ID}&qualifier=VW
-window.registerExtension("example/portfolio_page", options => {
+globalThis.registerExtension("example/portfolio_page", options => {
   return <VersionsMeasuresHistoryApp project={options.component} />;
 });

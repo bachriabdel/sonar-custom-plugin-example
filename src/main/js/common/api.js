@@ -72,24 +72,24 @@ export function findVersionsAndMeasures(project) {
           const numberOfMeasuresRetrieved = 7;
 
           for (let k = 0; k < numberOfMeasuresRetrieved; k++) {
-            for (let d = 0; d < responseMetrics.measures[k].history.length; d++) {
+            for (const historyEntry of responseMetrics.measures[k].history) {
               if (
-                responseMetrics.measures[k].history[d].date === responseAnalyses.analyses[i].date
+                historyEntry.date === responseAnalyses.analyses[i].date
               ) {
                 if (responseMetrics.measures[k].metric === "bugs") {
-                  result.bugs = responseMetrics.measures[k].history[d].value;
+                  result.bugs = historyEntry.value;
                 } else if (responseMetrics.measures[k].metric === "vulnerabilities") {
-                  result.vulnerabilities = responseMetrics.measures[k].history[d].value;
+                  result.vulnerabilities = historyEntry.value;
                 } else if (responseMetrics.measures[k].metric === "sqale_index") {
-                  result.sqale_index = responseMetrics.measures[k].history[d].value;
+                  result.sqale_index = historyEntry.value;
                 } else if (responseMetrics.measures[k].metric === "alert_status") {
-                  result.alert_status = responseMetrics.measures[k].history[d].value;
+                  result.alert_status = historyEntry.value;
                 } else if (responseMetrics.measures[k].metric === "reliability_rating") {
-                  result.reliability_rating = responseMetrics.measures[k].history[d].value;
+                  result.reliability_rating = historyEntry.value;
                 } else if (responseMetrics.measures[k].metric === "security_rating") {
-                  result.security_rating = responseMetrics.measures[k].history[d].value;
+                  result.security_rating = historyEntry.value;
                 } else if (responseMetrics.measures[k].metric === "sqale_rating") {
-                  result.sqale_rating = responseMetrics.measures[k].history[d].value;
+                  result.sqale_rating = historyEntry.value;
                 }
               }
             }

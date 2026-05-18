@@ -65,5 +65,5 @@ export default function MeasuresHistory(props) {
 }
 
 function formatRating(rating: number) {
-  return String.fromCharCode('A'.charCodeAt(0) - 1 + +rating);
+  return String.fromCodePoint('A'.codePointAt(0) - 1 + +rating);
 }

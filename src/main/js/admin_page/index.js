@@ -25,6 +25,6 @@ import InstanceStatisticsApp from './components/InstanceStatisticsApp';
 // and total number of projects.
 //
 // You can access it at /admin/extension/example/admin_page
-window.registerExtension('example/admin_page', () => {
+globalThis.registerExtension('example/admin_page', () => {
   return <InstanceStatisticsApp />
 });

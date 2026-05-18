@@ -23,7 +23,7 @@ import "./app.css";
 // projects inside the portfolio.
 //
 //  You can access it at /extension/example/global_page
-window.registerExtension('example/global_page', function (options) {
+globalThis.registerExtension('example/global_page', function (options) {
   // options.el contains the DOM node we can use for our app. Call the start
   // method to initialize the application, and pass it this DOM node.
   app.start(options.el);

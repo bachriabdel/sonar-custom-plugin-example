@@ -65,37 +65,37 @@ export default class InstanceStatisticsApp extends React.PureComponent {
           <tbody>
             <tr>
               <td className="code-name-cell">
-                {window.tp(
+                {globalThis.tp(
                   "example.admin_page.we_have_x_y",
                   this.state.numberOfQualityProfiles,
-                  window.t("example.admin_page.quality_profiles")
+                  globalThis.t("example.admin_page.quality_profiles")
                 )}
               </td>
             </tr>
             <tr>
               <td className="code-name-cell">
-                {window.tp(
+                {globalThis.tp(
                   "example.admin_page.we_have_x_y",
                   this.state.numberOfQualityGates,
-                  window.t("example.admin_page.quality_gates")
+                  globalThis.t("example.admin_page.quality_gates")
                 )}
               </td>
             </tr>
             <tr>
               <td className="code-name-cell">
-                {window.tp(
+                {globalThis.tp(
                   "example.admin_page.we_have_x_y",
                   this.state.numberOfIssues,
-                  window.t("example.admin_page.issues")
+                  globalThis.t("example.admin_page.issues")
                 )}
               </td>
             </tr>
             <tr>
               <td className="code-name-cell">
-                {window.tp(
+                {globalThis.tp(
                   "example.admin_page.we_have_x_y",
                   this.state.numberOfProjects,
-                  window.t("example.admin_page.projects")
+                  globalThis.t("example.admin_page.projects")
                 )}
               </td>
             </tr>

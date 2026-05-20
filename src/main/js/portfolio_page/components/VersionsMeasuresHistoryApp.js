@@ -17,10 +17,15 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
 import React from "react";
+import PropTypes from "prop-types";
 import { findVersionsAndMeasures } from "../../common/api";
 import MeasuresHistory from "./MeasuresHistory";
 
 export default class VersionsMeasuresHistoryApp extends React.PureComponent {
+  static propTypes = {
+    project: PropTypes.object.isRequired
+  };
+
   state = {
     loading: true,
     data: []
@@ -75,8 +80,7 @@ export default class VersionsMeasuresHistoryApp extends React.PureComponent {
             </tr>
           </thead>
           <tbody>
-            {this.state.data !== undefined &&
-              this.state.data.map((value, idx) => <MeasuresHistory measure={value} key={idx} />)}
+            {this.state.data?.map((value) => <MeasuresHistory measure={value} key={value.date} />)}
           </tbody>
         </table>
       </div>

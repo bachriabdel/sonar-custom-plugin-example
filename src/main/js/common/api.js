@@ -61,6 +61,7 @@ export function findVersionsAndMeasures(project) {
         var numberOfVersions = 0;
         for (let i = 0; i < numberOfAnalyses; i++) {
           let result = {
+            date: responseAnalyses.analyses[i].date,
             alert_status: "",
             bugs: "0",
             vulnerabilities: "0",

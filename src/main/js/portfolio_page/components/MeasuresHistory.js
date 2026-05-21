@@ -16,7 +16,7 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  */
-import React from "react";
+import React, { PropTypes } from "react";
 
 export default function MeasuresHistory(props) {
   return (
@@ -63,6 +63,18 @@ export default function MeasuresHistory(props) {
     </tr>
   );
 }
+
+MeasuresHistory.propTypes = {
+  measure: PropTypes.shape({
+    alert_status: PropTypes.string,
+    bugs: PropTypes.number,
+    reliability_rating: PropTypes.number,
+    vulnerabilities: PropTypes.number,
+    security_rating: PropTypes.number,
+    sqale_index: PropTypes.number,
+    sqale_rating: PropTypes.number,
+  }).isRequired,
+};
 
 function formatRating(rating: number) {
   return String.fromCharCode('A'.charCodeAt(0) - 1 + +rating);

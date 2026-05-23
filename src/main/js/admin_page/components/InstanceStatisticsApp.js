@@ -64,40 +64,40 @@ export default class InstanceStatisticsApp extends React.PureComponent {
         <table className="data zebra">
           <tbody>
             <tr>
-              <td className="code-name-cell">
+              <th scope="row" className="code-name-cell">
                 {window.tp(
                   "example.admin_page.we_have_x_y",
                   this.state.numberOfQualityProfiles,
                   window.t("example.admin_page.quality_profiles")
                 )}
-              </td>
+              </th>
             </tr>
             <tr>
-              <td className="code-name-cell">
+              <th scope="row" className="code-name-cell">
                 {window.tp(
                   "example.admin_page.we_have_x_y",
                   this.state.numberOfQualityGates,
                   window.t("example.admin_page.quality_gates")
                 )}
-              </td>
+              </th>
             </tr>
             <tr>
-              <td className="code-name-cell">
+              <th scope="row" className="code-name-cell">
                 {window.tp(
                   "example.admin_page.we_have_x_y",
                   this.state.numberOfIssues,
                   window.t("example.admin_page.issues")
                 )}
-              </td>
+              </th>
             </tr>
             <tr>
-              <td className="code-name-cell">
+              <th scope="row" className="code-name-cell">
                 {window.tp(
                   "example.admin_page.we_have_x_y",
                   this.state.numberOfProjects,
                   window.t("example.admin_page.projects")
                 )}
-              </td>
+              </th>
             </tr>
           </tbody>
         </table>

@@ -57,8 +57,8 @@ export function findVersionsAndMeasures(project) {
         metrics: "alert_status,bugs,vulnerabilities,sqale_index,reliability_rating,security_rating,sqale_rating",
         ps: 50
       }).then(function(responseMetrics) {
-        var data = [];
-        var numberOfVersions = 0;
+        const data = [];
+        let numberOfVersions = 0;
         for (let i = 0; i < numberOfAnalyses; i++) {
           let result = {
             alert_status: "",

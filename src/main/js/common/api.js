@@ -44,6 +44,26 @@ export function findProjects(project) {
   });
 }
 
+function buildResultForAnalysis(measures, analysisDate) {
+  const result = {
+    alert_status: "",
+    bugs: "0",
+    vulnerabilities: "0",
+    sqale_index: "0",
+    reliability_rating: "",
+    security_rating: "",
+    sqale_rating: ""
+  };
+  for (const measure of measures) {
+    for (const entry of measure.history) {
+      if (entry.date === analysisDate && measure.metric in result) {
+        result[measure.metric] = entry.value;
+      }
+    }
+  }
+  return result;
+}
+
 export function findVersionsAndMeasures(project) {
   return getJSON("/api/project_analyses/search", {
     project: project.key,
@@ -57,46 +77,9 @@ export function findVersionsAndMeasures(project) {
         metrics: "alert_status,bugs,vulnerabilities,sqale_index,reliability_rating,security_rating,sqale_rating",
         ps: 50
       }).then(function(responseMetrics) {
-        var data = [];
-        var numberOfVersions = 0;
-        for (let i = 0; i < numberOfAnalyses; i++) {
-          let result = {
-            alert_status: "",
-            bugs: "0",
-            vulnerabilities: "0",
-            sqale_index: "0",
-            reliability_rating: "",
-            security_rating: "",
-            sqale_rating: ""
-          };
-          const numberOfMeasuresRetrieved = 7;
-
-          for (let k = 0; k < numberOfMeasuresRetrieved; k++) {
-            for (let d = 0; d < responseMetrics.measures[k].history.length; d++) {
-              if (
-                responseMetrics.measures[k].history[d].date === responseAnalyses.analyses[i].date
-              ) {
-                if (responseMetrics.measures[k].metric === "bugs") {
-                  result.bugs = responseMetrics.measures[k].history[d].value;
-                } else if (responseMetrics.measures[k].metric === "vulnerabilities") {
-                  result.vulnerabilities = responseMetrics.measures[k].history[d].value;
-                } else if (responseMetrics.measures[k].metric === "sqale_index") {
-                  result.sqale_index = responseMetrics.measures[k].history[d].value;
-                } else if (responseMetrics.measures[k].metric === "alert_status") {
-                  result.alert_status = responseMetrics.measures[k].history[d].value;
-                } else if (responseMetrics.measures[k].metric === "reliability_rating") {
-                  result.reliability_rating = responseMetrics.measures[k].history[d].value;
-                } else if (responseMetrics.measures[k].metric === "security_rating") {
-                  result.security_rating = responseMetrics.measures[k].history[d].value;
-                } else if (responseMetrics.measures[k].metric === "sqale_rating") {
-                  result.sqale_rating = responseMetrics.measures[k].history[d].value;
-                }
-              }
-            }
-          }
-
-          data[numberOfVersions] = result;
-          numberOfVersions++;
+        const data = [];
+        for (const analysis of responseAnalyses.analyses) {
+          data.push(buildResultForAnalysis(responseMetrics.measures, analysis.date));
         }
         return data;
       });
